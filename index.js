@@ -18,8 +18,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
  
   function fallback(agent) {
-    agent.add(`ごめんにゃ、分からないにゃ。`);
-    agent.add(`他の言い回しで言えるかにゃ？`);
+    agent.add(`良い事が起きる魔法をかけるにゃ！`);
+    agent.add(`にゃんにゃんにゃにゃにゃ～♪`);
   }
   
   function aisatsu(agent) {
@@ -29,7 +29,18 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   
   function food(agent) {
     let food = agent.parameters.food;
-    agent.add(`にゃん子も${food}食べたいにゃ～`);
+    agent.add(`美味しい${food}食べるにゃ～`);
+  }
+  
+  function drink(agent) {
+    let food = agent.parameters.food;
+    agent.add(`美味しい${drink}飲むにゃ～`);
+  }
+  
+   function remote(agent) {
+    let remote = agent.parameters.remote;
+    agent.add(`${remote}はとっても楽にゃ！`);
+    agent.add(`にゃん子とずっと家にいるにゃ～`);
   }
   
   function tenki(agent) {
@@ -71,8 +82,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('food', food);
+  intentMap.set('drink', drink);
+  intentMap.set('remote', remote);
   intentMap.set('aisatsu', aisatsu);
   intentMap.set('tenki', tenki);
   agent.handleRequest(intentMap);
- 
 });
